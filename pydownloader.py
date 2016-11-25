@@ -44,7 +44,7 @@ class Downloader(QDialog):
     def browse_file(self):
         save_file = QFileDialog.getSaveFileName(self, caption="Save File As",
                                                 directory=".", filter="All Files(*.*)")
-        self.save_location.setText(save_file)
+        self.save_location.setText(QDir.toNativeSeparators(save_file))
 
     def download(self):
         url = self.url.text()
