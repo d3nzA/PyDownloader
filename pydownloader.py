@@ -13,6 +13,7 @@ class Downloader(QDialog):
         self.save_location = QLineEdit()
         self.progress = QProgressBar()
         download = QPushButton("Download")
+        browse = QPushButton("Browse")
 
         self.url.setPlaceholderText("URL")
         self.save_location.setPlaceholderText("File save Location")
@@ -20,20 +21,30 @@ class Downloader(QDialog):
         self.progress.setValue(0)  # init to zero
         self.progress.setAlignment(Qt.AlignHCenter)
 
+        # layout placement
         layout.addWidget(self.url)
         layout.addWidget(self.save_location)
+        layout.addWidget(browse)
         layout.addWidget(self.progress)
         layout.addWidget(download)
 
         self.setLayout(layout)
         self.setWindowTitle("Downloader")
-        self.setFocus( )
+        self.setFocus()
+
         # old style shit
         # download.clicked.connect(self.download)
-
+        # handle signals here
         QObject.connect(download, SIGNAL('clicked()'), self.download)
+        QObject.connect(browse, SIGNAL('clicked()'), self.browse_file)
 
     # TODO: fix logic error, progress bar not moving
+
+    # methods
+    def browse_file(self):
+        save_file = QFileDialog.getSaveFileName(self, caption="Save File As",
+                                                directory=".", filter="All Files(*.*)")
+        self.save_location.setText(save_file)
 
     def download(self):
         url = self.url.text()

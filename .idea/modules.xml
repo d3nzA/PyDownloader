@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Pluralsight.iml" filepath="$PROJECT_DIR$/.idea/Pluralsight.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/PyDownloader.iml" filepath="$PROJECT_DIR$/.idea/PyDownloader.iml" />
     </modules>
   </component>
 </project>
